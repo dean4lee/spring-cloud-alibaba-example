@@ -1,14 +1,13 @@
 server:
-  port: 8080
-  servlet:
-    context-path: /
+  port: 8020
 
 spring:
   application:
     name: nacos-config
-  # 在 Nacos Spring Cloud 中，dataId 的完整格式: ${prefix}-${spring.profiles.active}.${file-extension}
   cloud:
     nacos:
       config:
         server-addr: localhost:8848
         file-extension: yml
+  # 此项目中dataId: nacos-config.yml
+  # ${prefix}: nacos-config, ${spring.profiles.active}: 空, ${file-extension}: yml

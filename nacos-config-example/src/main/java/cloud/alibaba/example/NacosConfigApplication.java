@@ -18,15 +18,15 @@ public class NacosConfigApplication {
         SpringApplication.run(NacosConfigApplication.class, args);
     }
 
-    @Value("${password:null}")
-    private String password;
+    @Value("${user.name:null}")
+    private String name;
 
     @Autowired
     private User user;
 
-    @GetMapping("getPwd")
-    public String getPwd() {
-        return password;
+    @GetMapping("getName")
+    public String getName() {
+        return name;
     }
 
     @GetMapping("get")
