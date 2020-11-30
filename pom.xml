@@ -10,6 +10,7 @@
     <modules>
         <module>nacos-config-example</module>
         <module>nacos-discovery-example</module>
+        <module>dubbo-example</module>
     </modules>
     <packaging>pom</packaging>
 

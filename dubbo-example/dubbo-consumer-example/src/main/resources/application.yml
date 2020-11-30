@@ -1,0 +1,20 @@
+server:
+  port: 8030
+
+dubbo:
+  protocol:
+    name: dubbo
+    port: -1
+  cloud:
+    # 订阅服务提供方应用列表，多个应用订阅以,隔开。默认*订阅所有应用
+    subscribed-services: dubbo-provider
+  registry:
+    address: spring-cloud://localhost
+
+spring:
+  application:
+    name: dubbo-consumer
+  cloud:
+    nacos:
+      discovery:
+        server-addr: localhost:8848
