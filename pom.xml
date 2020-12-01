@@ -11,6 +11,7 @@
         <module>nacos-config-example</module>
         <module>nacos-discovery-example</module>
         <module>dubbo-example</module>
+        <module>sentinel-example</module>
     </modules>
     <packaging>pom</packaging>
 

@@ -1,0 +1,25 @@
+server:
+  port: 8040
+
+spring:
+  application:
+    name: sentinel-example
+  cloud:
+    sentinel:
+      transport:
+        # 控制台地址
+        dashboard: localhost:8080
+      datasource:
+        # ds1为datasource的名称，file为datasource的类型
+        ds1.file:
+          # 文件地址
+          file: classpath:flowrule.json
+          # 规则类型，flow为限流
+          rule-type: flow
+          # 规则数据的类型，默认为json
+          data-type: json
+        # 除file类型都需要引入对应的依赖
+#        ds2.nacos:
+#          server-addr: localhost:8848
+#          data-id: flowrule.json
+#          rule-type: flow
