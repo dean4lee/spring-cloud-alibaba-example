@@ -1,0 +1,15 @@
+server:
+  port: 8060
+
+spring:
+  application:
+    name: sentinel-feign-consumer
+  cloud:
+    nacos:
+      discovery:
+        server-addr: localhost:8848
+
+feign:
+  sentinel:
+    # 开启feign sentinel熔断降级支持
+    enabled: true
