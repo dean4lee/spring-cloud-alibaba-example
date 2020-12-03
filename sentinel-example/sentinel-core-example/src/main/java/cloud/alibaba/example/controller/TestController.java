@@ -11,23 +11,34 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 public class TestController {
 
-    // blockHandler 函数访问范围需要是 public，返回类型需要与原方法相匹配，
-    // 参数类型需要和原方法相匹配并且最后加一个额外的参数，类型为 BlockException。
-    // blockHandler 函数默认需要和原方法在同一个类中。
-    // 若希望使用其他类的函数，则可以指定 blockHandlerClass 为对应的类的 Class 对象，
-    // 注意对应的函数必需为 static 函数，否则无法解析。
-    @SentinelResource(value = "test", blockHandler = "testHandler")
+    /*
+     blockHandler 函数访问范围需要是 public，返回类型需要与原方法相匹配，
+     参数类型需要和原方法相匹配并且最后加一个额外的参数，类型为 BlockException。
+     blockHandler 函数默认需要和原方法在同一个类中。
+     若希望使用其他类的函数，则可以指定 blockHandlerClass 为对应的类的 Class 对象，
+     注意对应的函数必需为 static 函数，否则无法解析。
+
+     fallback函数针对熔断降级异常
+     */
+    @SentinelResource(value = "test", blockHandler = "testHandler", fallback = "testFallback")
     @GetMapping("test")
-    public String test(){
+    public String test() {
+        // 模拟异常，进入fallback
+        // throw new RuntimeException();
         return "test";
     }
 
     @GetMapping("hello")
-    public String hello(){
+    public String hello() {
         return "hello";
     }
 
-    public String testHandler(BlockException e){
+    public String testHandler(BlockException e) {
         return "test limiting";
+    }
+
+
+    public String testFallback() {
+        return "test error";
     }
 }
