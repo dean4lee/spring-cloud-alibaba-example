@@ -1,0 +1,36 @@
+server:
+  port: 8070
+
+spring:
+  application:
+    name: pay-consumer
+  cloud:
+    alibaba:
+      seata:
+        # 与client端的service.vgroupMapping配置参数相同
+        tx-service-group: seata-group
+    nacos:
+      discovery:
+        server-addr: localhost:8848
+
+# 此配置为client端配置，大部分参数都使用默认值
+# 如果使用本地文件，可以使用registry.conf和file.conf配置
+# 也可以在配置中心中配置
+seata:
+  # seata-server所在的地址
+  registry:
+    type: nacos
+    nacos:
+      server-addr: localhost:8848
+  service:
+    # seata-group为分组，配置项值为TC集群名
+    vgroup-mapping:
+      seata-group: default
+  # 配置中心
+#  config:
+#    type: nacos
+#    nacos:
+#      server-addr: localhost:8848
+
+
+
